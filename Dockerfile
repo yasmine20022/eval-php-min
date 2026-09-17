@@ -1,8 +1,7 @@
-FROM php:8.2-cli-alpine
-WORKDIR /app
+FROM php:8.2-cli
+RUN useradd -m -s /bin/bash appuser
 COPY . /app
-RUN addgroup -S app && adduser -S -G app app
 EXPOSE 80
-HEALTHCHECK CMD curl -f http://localhost:80/ || exit 1
-USER app
-CMD ["php","-S","0.0.0.0:80"]
+HEALTHCHECK CMD curl --fail http://localhost:80/ || exit 1
+USER appuser
+CMD ["php","-S","0.0.0.0:80","-t","/app"]
