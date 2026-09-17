@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/name: eval-php-min
     app.kubernetes.io/instance: eval-php-min
-    app.kubernetes.io/part-of: eval-php-min
+    app.kubernetes.io/component: web
 spec:
   type: NodePort
   selector:
