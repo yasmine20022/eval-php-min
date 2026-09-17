@@ -5,9 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/name: eval-php-min
     app.kubernetes.io/instance: eval-php-min
-    app.kubernetes.io/version: latest
-    app.kubernetes.io/part-of: eval-php-min
-    app.kubernetes.io/managed-by: helm
+    app.kubernetes.io/component: web
 spec:
   replicas: 1
   selector:
@@ -24,9 +22,7 @@ spec:
         app: eval-php-min
         app.kubernetes.io/name: eval-php-min
         app.kubernetes.io/instance: eval-php-min
-        app.kubernetes.io/version: latest
-        app.kubernetes.io/part-of: eval-php-min
-        app.kubernetes.io/managed-by: helm
+        app.kubernetes.io/component: web
     spec:
       containers:
       - name: eval-php-min
@@ -54,12 +50,12 @@ spec:
             path: /health
             port: 80
           initialDelaySeconds: 5
-          periodSeconds: 10
+          periodSeconds: 5
           timeoutSeconds: 2
           failureThreshold: 3
         startupProbe:
           httpGet:
             path: /health
             port: 80
-          periodSeconds: 10
           failureThreshold: 30
+          periodSeconds: 10
